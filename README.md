@@ -1,21 +1,21 @@
-# @philiprehberger/middleware-ts
+# @philiprehberger/ts-middleware
 
-[![CI](https://github.com/philiprehberger/middleware-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/middleware-ts/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/@philiprehberger/middleware-ts.svg)](https://www.npmjs.com/package/@philiprehberger/middleware-ts)
-[![License](https://img.shields.io/github/license/philiprehberger/middleware-ts)](LICENSE)
+[![CI](https://github.com/philiprehberger/ts-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-middleware/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@philiprehberger/ts-middleware.svg)](https://www.npmjs.com/package/@philiprehberger/ts-middleware)
+[![License](https://img.shields.io/github/license/philiprehberger/ts-middleware)](LICENSE)
 
 Framework-agnostic middleware composition engine.
 
 ## Installation
 
 ```bash
-npm install @philiprehberger/middleware-ts
+npm install @philiprehberger/ts-middleware
 ```
 
 ## Usage
 
 ```ts
-import { compose, createPipeline } from '@philiprehberger/middleware-ts';
+import { compose, createPipeline } from '@philiprehberger/ts-middleware';
 
 type Ctx = { req: Request; user?: User };
 
@@ -31,7 +31,7 @@ await app({ req: new Request('/api') });
 ### Conditional Branching
 
 ```ts
-import { branch } from '@philiprehberger/middleware-ts';
+import { branch } from '@philiprehberger/ts-middleware';
 
 const authBranch = branch(
   (ctx) => ctx.req.url.startsWith('/api'),
