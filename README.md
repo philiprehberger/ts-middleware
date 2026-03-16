@@ -1,6 +1,6 @@
 # @philiprehberger/ts-middleware
 
-[![CI](https://github.com/philiprehberger/ts-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-middleware/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/ts-middleware/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/ts-middleware/actions/workflows/publish.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/ts-middleware.svg)](https://www.npmjs.com/package/@philiprehberger/ts-middleware)
 [![License](https://img.shields.io/github/license/philiprehberger/ts-middleware)](LICENSE)
 
@@ -48,6 +48,15 @@ const authBranch = branch(
 | `createPipeline<Ctx>()` | Builder with `.use()` and `.useIf()` |
 | `branch(condition, trueMw, falseMw?)` | Conditional middleware |
 | `withErrorHandler(mw, handler)` | Wrap with error catching |
+
+
+## Development
+
+```bash
+npm install
+npm run build
+npm test
+```
 
 ## License
 
