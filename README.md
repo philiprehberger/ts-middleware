@@ -1,8 +1,8 @@
 # @philiprehberger/middleware-ts
 
-[![CI](https://github.com/philiprehberger/middleware-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/middleware-ts/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/ts-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-middleware/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/middleware-ts.svg)](https://www.npmjs.com/package/@philiprehberger/middleware-ts)
-[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/middleware-ts)](https://github.com/philiprehberger/middleware-ts/commits/main)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/ts-middleware)](https://github.com/philiprehberger/ts-middleware/commits/main)
 
 Framework-agnostic middleware composition engine
 
@@ -40,6 +40,27 @@ const authBranch = branch(
 );
 ```
 
+### Timeout
+
+```ts
+import { withTimeout, MiddlewareTimeoutError } from '@philiprehberger/middleware-ts';
+
+const slowOp = withTimeout(async (ctx, next) => {
+  await fetchSomethingSlow(ctx);
+  await next();
+}, 5000);
+```
+
+### Tap (Side Effects)
+
+```ts
+import { tap } from '@philiprehberger/middleware-ts';
+
+const logger = tap<Ctx>((ctx) => {
+  console.log(`[req] ${ctx.req.url}`);
+});
+```
+
 ## API
 
 | Function | Description |
@@ -48,6 +69,8 @@ const authBranch = branch(
 | `createPipeline<Ctx>()` | Builder with `.use()` and `.useIf()` |
 | `branch(condition, trueMw, falseMw?)` | Conditional middleware |
 | `withErrorHandler(mw, handler)` | Wrap with error catching |
+| `withTimeout(mw, ms)` | Reject with `MiddlewareTimeoutError` if `mw` exceeds `ms` |
+| `tap(fn)` | Run a side-effect and continue the pipeline |
 
 ## Development
 
@@ -61,11 +84,11 @@ npm test
 
 If you find this project useful:
 
-⭐ [Star the repo](https://github.com/philiprehberger/middleware-ts)
+⭐ [Star the repo](https://github.com/philiprehberger/ts-middleware)
 
-🐛 [Report issues](https://github.com/philiprehberger/middleware-ts/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+🐛 [Report issues](https://github.com/philiprehberger/ts-middleware/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
 
-💡 [Suggest features](https://github.com/philiprehberger/middleware-ts/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+💡 [Suggest features](https://github.com/philiprehberger/ts-middleware/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
 
 ❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
 
